@@ -1,26 +1,26 @@
 import style from "./style.module.scss";
-
+import axios_config from "./../../config/axios"
 import service from "../../services/criptoService";
 
 import react, { useState, useEffect } from "react";
 
 export default function Content() {
-  const [negotiation, setNegotiation] = useState({})
+  const [negotiation, setNegotiation] = useState()
 
-  useEffect(() => {
-    const coin = "BTC";
-    const information = "ticker";
-
-    const getInformation = service
-      .getCoin(coin, information)
-      .then((response) => {
-        setNegotiation(response) 
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+  useEffect(() => {      
   }, [])
+
+  const getCoin = ((coin) => {
+    axios_config.get(`${coin}/ticker`).then((response)=> {
+      console.log(response)
+      setNegotiation(response.data.ticker) 
+    }).catch( (err)=> {
+    });
+
+  })
+  const search =(()=> {
+
+  })
 
   return (
     <div className={style.contentContainer}>
@@ -30,10 +30,10 @@ export default function Content() {
           <p>Higor e o Tr Chupam a minha bola</p>
         </div>
         <div className={style.cardSecundary}>
-          <p>{negotiation.data.ticker.buy}</p>
-          <p>{negotiation.data.ticker.date}</p>
-          <p>{negotiation.data.ticker.high}</p>
-          <p>{negotiation.data.ticker.low}</p>
+          <p>{negotiation}</p>
+          <p>{negotiation}</p>
+          <p>{negotiation}</p>
+          <p>{negotiation}</p>
         </div>
       </div>
       <img

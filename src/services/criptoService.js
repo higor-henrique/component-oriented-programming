@@ -4,7 +4,8 @@ class CriptoService {
   static async getCoin(coin, method) {
     try {
 
-      return await axios_config.get(`${coin}/${method}`);
+      const information = await  axios_config.get(`${coin}/${method}`);
+      return information;
 
     }catch(e) {
       console.log(e);
