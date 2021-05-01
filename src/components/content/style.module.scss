@@ -1,0 +1,52 @@
+.contentContainer {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+
+  .photoTop {
+    margin: 2rem 0 -7rem 1.5rem;
+    height: 100%;
+    width: 30rem;
+  }
+  .photoBottom {
+    margin: -4rem 0 0 1.5rem;
+    height: 100%;
+    width: 30rem;
+  }
+  .containerCard {
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+  }
+
+  .cardPrimary {
+    margin: 0 0 0 4rem;
+    height: 23rem;
+    width: 20rem;
+    background: var(--white);
+    border: 1px solid #767272;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    p {
+      text-align: justify;
+      padding: 2rem 4rem;
+    }
+  }
+  .cardSecundary {
+    margin: 0 4rem 0 4rem;
+    height: 23rem;
+    width: 40rem;
+    background: var(--white);
+    border: 1px solid #767272;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    p {
+      text-align: justify;
+      padding: 2rem 4rem;
+    }
+  }
+}
