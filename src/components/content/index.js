@@ -1,46 +1,67 @@
 import style from "./style.module.scss";
 
-import service from "../../services/criptoService";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { coinAction } from "../../store/ducks/criptocoin";
 
-import react, { useState, useEffect } from "react";
+import { Component } from "react";
 
-export default function Content() {
-  const [negotiation, setNegotiation] = useState({})
+class Content extends Component {
+  state = {
+    inputValue: "",
+  };
 
-  useEffect(() => {
-    const coin = "BTC";
-    const information = "ticker";
+  inputChange = (event) => {
+    this.setState({
+      inputValue: event.target.value,
+    });
+  };
 
-    const getInformation = service
-      .getCoin(coin, information)
-      .then((response) => {
-        setNegotiation(response) 
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  render() {
+    const { coinAction, coin } = this.props;
 
-  }, [])
+    const { inputValue } = this.state;
 
-  return (
-    <div className={style.contentContainer}>
-      <img className={style.photoTop} src="./hexagono-first.svg" alt="photo" />
-      <div className={style.containerCard}>
-        <div className={style.cardPrimary}>
-          <p>Higor e o Tr Chupam a minha bola</p>
+    return (
+      <div className={style.contentContainer}>
+        <input
+          type="text"
+          onChange={this.inputChange}
+          value={inputValue}
+        ></input>
+        <button onClick={() => coinAction(inputValue)}>Click me!</button>
+        <div className={style.containerPhoto}>
+          <img
+            className={style.photoTop}
+            src="./hexagono-first.svg"
+            alt="photo1"
+          />
         </div>
-        <div className={style.cardSecundary}>
-          <p>{negotiation.data.ticker.buy}</p>
-          <p>{negotiation.data.ticker.date}</p>
-          <p>{negotiation.data.ticker.high}</p>
-          <p>{negotiation.data.ticker.low}</p>
+        <div className={style.containerCard}>
+          <div className={style.cardPrimary}>
+            <p>Higor e o Tr Chupam a minha bola</p>
+          </div>
+          <div className={style.cardSecundary}>
+            <p>{coin}</p>
+          </div>
+        </div>
+        <div className={style.containerPhoto}>
+          <img
+            className={style.photoBottom}
+            src="./hexagono-secundary.svg"
+            alt="photo2"
+          />
         </div>
       </div>
-      <img
-        className={style.photoBottom}
-        src="./hexagono-secundary.svg"
-        alt="photo"
-      />
-    </div>
-  );
+    );
+  }
 }
+
+const mapStateToProps = (store) => ({
+  coin: store.coinState.coin,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ coinAction }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);
