@@ -1,4 +1,4 @@
-# cryptocurrencies
+# Cryptocurrencies
 
 ## Project setup
 ```
