@@ -1,15 +1,10 @@
 <template>
   <v-app>
-    <v-app-bar app height="70">
-      <Header></Header>
-    </v-app-bar>
-    <v-main>
-      <router-view></router-view>
-    </v-main>
+    <Header></Header>
 
-    <v-footer height="20">
-      <Footer></Footer>
-    </v-footer>
+    <router-view></router-view>
+
+    <Footer></Footer>
   </v-app>
 </template>
 
