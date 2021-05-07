@@ -1,7 +1,11 @@
 <template>
-  <v-col class="text-center" cols="12">
-    {{ new Date().getFullYear() }} — <strong>BIT Informa</strong>
-  </v-col>
+  <v-footer app>
+    <v-row>
+      <v-col class="text-center" cols="12">
+        {{ new Date().getFullYear() }} — <strong>BIT Informa</strong>
+      </v-col>
+    </v-row>
+  </v-footer>
 </template>
 
 <script>
